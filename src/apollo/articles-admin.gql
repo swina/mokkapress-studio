@@ -1,0 +1,34 @@
+query Articles ( $limit : Int, $start : Int , $cat: String , $sort: String ) {
+  articles ( where : { categories: { name: $cat } } ,limit: $limit , start: $start ,  sort: $sort ){
+    id
+    title
+    slug
+    tags
+    homepage
+    excerpt
+    updated_at
+    random_image
+    featured_img
+    lang
+    categories {
+      name
+    }
+    component {
+      id
+      name
+      category
+      image_uri
+      image {
+        url
+      }
+    }
+    image {
+      url
+      caption
+      alternativeText
+    }
+    template_id
+    seo_title
+    seo_description
+  }
+}

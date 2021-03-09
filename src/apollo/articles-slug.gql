@@ -1,0 +1,42 @@
+query Articles ( $slug : String){
+  articles( where : { slug :$slug } ) {
+    id
+    title
+    excerpt
+    content
+    homepage
+    random_image
+    featured_img
+    tags
+    lang
+    image { 
+        name 
+        url
+        caption
+        alternativeText
+    }
+    gallery {
+        name
+        url
+        caption
+        alternativeText
+    }
+    image_title
+    updated_at
+    seo_title
+    seo_description
+    
+    categories {
+        name
+        slug
+    }
+    parent {
+      slug
+      title
+    }
+    component {
+      id
+    }
+    template_id
+  } 
+}

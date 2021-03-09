@@ -1,0 +1,9 @@
+query Products ( $id: ID ) {
+  products ( where : { id: $id } ) {
+        id
+        code
+        name
+        price
+        image_uri
+    }
+}

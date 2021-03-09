@@ -1,0 +1,11 @@
+query Articles ( $template_id : String){
+  articles( where : { template_id :$template_id } ) {
+    id
+    title
+    template_id
+    component {
+        id
+    }
+    blocks
+  } 
+}

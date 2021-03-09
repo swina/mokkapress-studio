@@ -1,0 +1,23 @@
+query Articles ( $start: Int , $limit: Int $sort : String ) {
+  articles ( start: $start , limit: $limit , sort: $sort ) {
+    id
+    title
+    slug
+    homepage
+    updated_at
+    template_id
+    seo_title
+    seo_description
+    image {
+      caption
+      alternativeText
+      url
+      previewUrl
+    }
+    categories {
+      name
+      slug
+    }
+    
+  }
+}

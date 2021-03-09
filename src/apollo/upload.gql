@@ -1,0 +1,19 @@
+query Upload ($limit: Int , $start: Int , $search: String ){
+  files ( 
+        where:{ name_contains :$search }, 
+        limit : $limit , start: $start ,  sort: "updated_at:desc" 
+    ){
+  	id
+    name
+    url
+    previewUrl
+    mime
+    width
+    height
+    size
+    ext
+    formats
+    caption
+    alternativeText
+  }
+}
