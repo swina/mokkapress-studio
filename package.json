@@ -38,6 +38,7 @@
     "vue-apollo": "^3.0.4",
     "vue-awesome-swiper": "^4.1.1",
     "vue-blob-json-csv": "^0.1.7",
+    "vue-burger-menu": "^2.0.5",
     "vue-draggable-resizable": "^2.2.0",
     "vue-electron": "^1.0.6",
     "vue-file-agent": "^1.7.3",

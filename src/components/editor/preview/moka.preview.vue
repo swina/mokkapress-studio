@@ -1,5 +1,5 @@
 <template> 
-    <div :key="refreshID" :ref="doc.id" :class="pageCss(doc.css) + ' overflow-x-hidden '" :style="stile(doc,true) + ' ' + background(doc)" id="content">
+    <div :key="refreshID" :ref="doc.id" :class="pageCss(doc.css) + ' m-auto overflow-x-hidden '" :style="stile(doc,true) + ' ' + background(doc)" id="content">
         <!-- 1st level - BLOCKS LOOP -->
         
             <template v-for="(block,b) in doc.blocks">
@@ -56,9 +56,12 @@
         </div>   
         <div class="fixed bottom-0 left-0 w-8 h-8">
             <div class="flex flex-row relative">
-            <i class="material-icons absolute top-0 left-0 moka-icon-circle text-white visible md:invisible">phone_iphone</i>
+                <i class="material-icons  moka-icon-circle text-white" @click="resizeWindow(375)">phone_iphone</i>
+                <i class="material-icons moka-icon-circle text-white" @click="previewWidth='640px;border:1px solid #eaeaea'">tablet</i>
+                <i class="material-icons moka-icon-circle text-white" @click="previewWidth='100vw'">laptop_mac</i>
+            <!--<i class="material-icons absolute top-0 left-0 moka-icon-circle text-white visible md:invisible">phone_iphone</i>
             <i class="material-icons absolute top-0 left-0 moka-icon-circle text-white invisible md:visible lg:invisible">tablet</i>
-            <i class="material-icons absolute top-0 left-0 moka-icon-circle text-white invisible lg:visible">laptop_mac</i>
+            <i class="material-icons absolute top-0 left-0 moka-icon-circle text-white invisible lg:visible">laptop_mac</i>-->
             </div>
         </div> 
                    
@@ -88,7 +91,8 @@ export default {
     data:()=>({
         printScreen: null,
         refreshID: null,
-        plugins: []
+        plugins: [],
+        previewWidth: 'w-screen'
     }),
     components: { 
         MokaContainer,

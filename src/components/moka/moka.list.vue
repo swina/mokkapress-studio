@@ -289,7 +289,7 @@ export default {
             window.localStorage.setItem('moka-preview',JSON.stringify(this.doc))
             let route = this.$router.resolve({path: '/preview'});
             // let route = this.$router.resolve('/link/to/page'); // This also works.
-            var w = window.open(route.href, 'moka');
+            var w = window.open(route.href, 'moka','width=375');
             w.focus()
             //this.component = component
             //this.preview =! this.preview

@@ -1,18 +1,18 @@
 <template>
 <div>
     <nav v-if="el.element === 'menu'" :class="menu_responsive(el) + ' z-top ' + el.css.align"> 
+        
+        
         <div menu_item v-for="(item,i) in el.items" :class="el.css.css + ' cursor-pointer relative pr-4'" :key="el.id + '_' + i"> 
 
             <a :class="el.css.css" v-if="!item.submenu && !$attrs.develop && item.link && !item.link.includes('http')" :href="item.link">
                 <span v-if="!item.hasOwnProperty('icon') && !item.icon">{{ item.label }}</span>
                 <span v-else><i :class="'bi-' + item.icon"></i></span> 
-                <!--<i v-if="item.submenu" class="material-icons moka-icons">arrow_drop_down</i>-->
             </a>
             
             <span v-else @mouseover="menuover=i" :class="el.css.css" @click="menuover=i">
                 <span v-if="!item.hasOwnProperty('icon') && !item.icon">{{ item.label }}</span>
                 <span v-else><i :class="'bi-' + item.icon"></i></span>
-                <!--<i v-if="item.submenu && item.submenu.length" :class="el.css.css + ' material-icons moka-icons text-sm'">arrow_drop_down</i>-->
             </span>
             
             <transition name="slidedown">
@@ -23,9 +23,14 @@
             </div>
             </transition>
         </div>
+        
+
     </nav>
-    
+    <div class="md:hidden" id="page-wrap">
+        <moka-burger-menu :el="el"/>
+    </div>
     <!-- responsive -->
+    <!--
     <i :class="'bi-list moka-icons z-max fixed md:hidden top-0 left-0 m-1 text-3xl' + el.css.css " v-if="el.element === 'menu' && el.responsive" @click="showmenu"></i>
     <transition :name="'fade' || responsive_transition_settings">
         <nav v-if="menu_show" :class="'md:hidden ' + responsive_css_settings"> 
@@ -44,15 +49,18 @@
             </div>
         </nav>
     </transition>
-
+    -->
 </div>
 </template>
 
 <script>
+import MokaBurgerMenu from './moka.burger.menu'
 import { mapState } from 'vuex'
+
 var gsap
 export default {
     name: 'MokaMenuElement',
+    components: { MokaBurgerMenu },
     props: ['el'],
     data:()=>({
         opacity: 'opacity-0',

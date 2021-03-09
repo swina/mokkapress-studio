@@ -249,6 +249,7 @@ export default {
             doc && !doc.hasOwnProperty('type') ? color = 'border-red-500 ' : null
             doc && doc.hasOwnProperty('slider') ? color = 'border-yellow-500 ' : null
             doc && doc.hasOwnProperty('popup') ? color = 'border-teal-200 ' : null
+            doc && doc.hasOwnProperty('plugin') ? color = 'border-orange-600 ' : null
             doc.type === 'flex' ?
                 doc.hasOwnProperty('popup') ? color = 'border-teal-200 border-2 ' :
                     color = 'border-red-500 border-2 bg-gray-300 bg-opacity-25 ' : ''

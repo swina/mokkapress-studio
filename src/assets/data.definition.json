@@ -1,0 +1,1001 @@
+[
+    {
+        "uid": "application::article.article",
+        "apiID": "article",
+        "schema": {
+            "name": "Article",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "Articles",
+            "attributes": {
+                "title": {
+                    "type": "string"
+                },
+                "excerpt": {
+                    "type": "richtext"
+                },
+                "content": {
+                    "type": "richtext"
+                },
+                "image": {
+                    "type": "media",
+                    "multiple": false,
+                    "required": false,
+                    "allowedTypes": [
+                        "images",
+                        "files",
+                        "videos"
+                    ]
+                },
+                "categories": {
+                    "nature": "manyWay",
+                    "target": "application::category.category",
+                    "dominant": false,
+                    "private": false,
+                    "unique": false
+                },
+                "gallery": {
+                    "type": "media",
+                    "multiple": true,
+                    "required": false,
+                    "allowedTypes": [
+                        "images",
+                        "files",
+                        "videos"
+                    ]
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "homepage": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "menu": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "random_image": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "list_exclude": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "parent": {
+                    "nature": "oneWay",
+                    "target": "application::article.article",
+                    "dominant": false,
+                    "private": false,
+                    "unique": false
+                },
+                "tags": {
+                    "type": "text"
+                },
+                "image_title": {
+                    "type": "string"
+                },
+                "component": {
+                    "nature": "oneWay",
+                    "target": "application::components.components",
+                    "dominant": false,
+                    "columnName": "Template",
+                    "private": false,
+                    "unique": false
+                },
+                "user": {
+                    "nature": "oneWay",
+                    "target": "plugins::users-permissions.user",
+                    "plugin": "users-permissions",
+                    "dominant": false,
+                    "private": false,
+                    "unique": false
+                },
+                "lang": {
+                    "type": "string",
+                    "default": "en",
+                    "required": false
+                },
+                "template_id": {
+                    "type": "string"
+                },
+                "seo_title": {
+                    "type": "string",
+                    "default": "nuxpresso page"
+                },
+                "seo_description": {
+                    "type": "text",
+                    "default": "a nuxpresso page"
+                },
+                "blocks": {
+                    "type": "json"
+                },
+                "featured_img": {
+                    "type": "json"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::category.category",
+        "apiID": "category",
+        "schema": {
+            "name": "Category",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "Categories",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "required": true
+                },
+                "automenu": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "products": {
+                    "nature": "manyToMany",
+                    "target": "application::product.product",
+                    "dominant": false,
+                    "targetAttribute": "categories",
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::components.components",
+        "apiID": "components",
+        "schema": {
+            "name": "Components",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "components",
+            "attributes": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "text"
+                },
+                "json": {
+                    "type": "json"
+                },
+                "image": {
+                    "type": "media",
+                    "multiple": false,
+                    "required": false,
+                    "allowedTypes": [
+                        "images",
+                        "files",
+                        "videos"
+                    ]
+                },
+                "html": {
+                    "type": "text"
+                },
+                "image_uri": {
+                    "type": "text"
+                },
+                "category": {
+                    "type": "enumeration",
+                    "enum": [
+                        "element",
+                        "component",
+                        "widget",
+                        "template",
+                        "layout",
+                        "page",
+                        "slider",
+                        "gallery",
+                        "archive",
+                        "starred",
+                        "favorite",
+                        "menu"
+                    ]
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "loop": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "default": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "favorite": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "loop_limit": {
+                    "type": "integer"
+                },
+                "loop_pagination": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "loop_type": {
+                    "type": "string",
+                    "default": "articles"
+                },
+                "tags": {
+                    "type": "text"
+                },
+                "blocks_id": {
+                    "type": "string"
+                },
+                "autosave": {
+                    "type": "json"
+                },
+                "premium": {
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::contacts.contacts",
+        "apiID": "contacts",
+        "schema": {
+            "name": "Contacts",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "contacts",
+            "attributes": {
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "newsletter": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "message": {
+                    "type": "text"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::elements.elements",
+        "apiID": "elements",
+        "schema": {
+            "name": "Elements",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "singleType",
+            "collectionName": "elements",
+            "attributes": {
+                "moka": {
+                    "type": "json"
+                },
+                "types": {
+                    "type": "json"
+                },
+                "plugins": {
+                    "type": "json"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::languages.languages",
+        "apiID": "languages",
+        "schema": {
+            "name": "Languages",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "languages",
+            "attributes": {
+                "lang_code": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "default": true
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::market.market",
+        "apiID": "market",
+        "schema": {
+            "name": "market",
+            "description": "",
+            "draftAndPublish": true,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "markets",
+            "attributes": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::plugins.plugins",
+        "apiID": "plugins",
+        "schema": {
+            "name": "plugins",
+            "description": "",
+            "draftAndPublish": true,
+            "connection": "default",
+            "kind": "singleType",
+            "collectionName": "plugins",
+            "attributes": {
+                "plugins": {
+                    "type": "json"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::product.product",
+        "apiID": "product",
+        "schema": {
+            "name": "Product",
+            "description": "",
+            "draftAndPublish": true,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "products",
+            "attributes": {
+                "name": {
+                    "type": "string"
+                },
+                "excerpt": {
+                    "type": "text"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "variations": {
+                    "type": "json"
+                },
+                "price": {
+                    "type": "decimal",
+                    "default": 0
+                },
+                "sale": {
+                    "type": "decimal"
+                },
+                "active": {
+                    "type": "boolean"
+                },
+                "new": {
+                    "type": "boolean"
+                },
+                "categories": {
+                    "nature": "manyToMany",
+                    "target": "application::category.category",
+                    "dominant": true,
+                    "targetAttribute": "products",
+                    "private": false,
+                    "unique": false
+                },
+                "image_uri": {
+                    "type": "text"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "application::settings.settings",
+        "apiID": "settings",
+        "schema": {
+            "name": "settings",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "singleType",
+            "collectionName": "settings",
+            "attributes": {
+                "site_name": {
+                    "type": "string",
+                    "default": "nuxpresso",
+                    "required": true
+                },
+                "site_title": {
+                    "type": "string",
+                    "default": "Just a nuxpresso site"
+                },
+                "show_title": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "footer": {
+                    "type": "text",
+                    "default": "nuxpresso - Created with NuxtJS / Strapi / Tailwindcss "
+                },
+                "logo_img": {
+                    "type": "media",
+                    "multiple": false,
+                    "required": false,
+                    "allowedTypes": [
+                        "images"
+                    ]
+                },
+                "email": {
+                    "type": "string"
+                },
+                "github": {
+                    "type": "string"
+                },
+                "twitter": {
+                    "type": "string"
+                },
+                "header": {
+                    "type": "media",
+                    "multiple": true,
+                    "required": false,
+                    "allowedTypes": [
+                        "images",
+                        "files",
+                        "videos"
+                    ]
+                },
+                "autoimage": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "breadcrumb": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "darkmode": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "authentication": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "read_more": {
+                    "type": "string",
+                    "default": "READ MORE"
+                },
+                "scrolltop": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "body_bg": {
+                    "type": "string"
+                },
+                "body_color": {
+                    "type": "string"
+                },
+                "body_image": {
+                    "type": "media",
+                    "multiple": false,
+                    "required": false,
+                    "allowedTypes": [
+                        "images",
+                        "files",
+                        "videos"
+                    ]
+                },
+                "google_analytics": {
+                    "type": "string"
+                },
+                "darkmode_bg": {
+                    "type": "string"
+                },
+                "darkmode_color": {
+                    "type": "string"
+                },
+                "seo_title": {
+                    "type": "string"
+                },
+                "seo_description": {
+                    "type": "text"
+                },
+                "responsive_menu_css": {
+                    "type": "text"
+                },
+                "responsive_menu_transition": {
+                    "type": "string"
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "strapi::permission",
+        "plugin": "admin",
+        "apiID": "permission",
+        "schema": {
+            "name": "Permission",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "strapi_permission",
+            "attributes": {
+                "action": {
+                    "type": "string",
+                    "minLength": 1,
+                    "configurable": false,
+                    "required": true
+                },
+                "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "configurable": false,
+                    "required": false
+                },
+                "fields": {
+                    "type": "json",
+                    "configurable": false,
+                    "required": false,
+                    "default": []
+                },
+                "conditions": {
+                    "type": "json",
+                    "configurable": false,
+                    "required": false,
+                    "default": []
+                },
+                "role": {
+                    "nature": "manyToOne",
+                    "target": "strapi::role",
+                    "plugin": "admin",
+                    "dominant": false,
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": false,
+            "restrictRelationsTo": []
+        }
+    },
+    {
+        "uid": "strapi::role",
+        "plugin": "admin",
+        "apiID": "role",
+        "schema": {
+            "name": "Role",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "strapi_role",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "unique": true,
+                    "configurable": false,
+                    "required": true
+                },
+                "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "unique": true,
+                    "configurable": false,
+                    "required": true
+                },
+                "description": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "users": {
+                    "nature": "manyToMany",
+                    "target": "strapi::user",
+                    "plugin": "admin",
+                    "dominant": false,
+                    "targetAttribute": "roles",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                },
+                "permissions": {
+                    "nature": "oneToMany",
+                    "target": "strapi::permission",
+                    "plugin": "admin",
+                    "dominant": false,
+                    "targetAttribute": "role",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": false,
+            "restrictRelationsTo": []
+        }
+    },
+    {
+        "uid": "strapi::user",
+        "plugin": "admin",
+        "apiID": "user",
+        "schema": {
+            "name": "User",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "strapi_administrator",
+            "attributes": {
+                "firstname": {
+                    "type": "string",
+                    "unique": false,
+                    "minLength": 1,
+                    "configurable": false,
+                    "required": false
+                },
+                "lastname": {
+                    "type": "string",
+                    "unique": false,
+                    "minLength": 1,
+                    "configurable": false,
+                    "required": false
+                },
+                "username": {
+                    "type": "string",
+                    "unique": false,
+                    "configurable": false,
+                    "required": false
+                },
+                "email": {
+                    "type": "email",
+                    "minLength": 6,
+                    "configurable": false,
+                    "required": true,
+                    "unique": true,
+                    "private": true
+                },
+                "password": {
+                    "type": "password",
+                    "minLength": 6,
+                    "configurable": false,
+                    "required": false,
+                    "private": true
+                },
+                "resetPasswordToken": {
+                    "type": "string",
+                    "configurable": false,
+                    "private": true
+                },
+                "registrationToken": {
+                    "type": "string",
+                    "configurable": false,
+                    "private": true
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "default": false,
+                    "configurable": false,
+                    "private": true
+                },
+                "roles": {
+                    "nature": "manyToMany",
+                    "target": "strapi::role",
+                    "plugin": "admin",
+                    "dominant": true,
+                    "targetAttribute": "users",
+                    "configurable": false,
+                    "private": true,
+                    "unique": false
+                },
+                "blocked": {
+                    "type": "boolean",
+                    "default": false,
+                    "configurable": false,
+                    "private": true
+                }
+            },
+            "editable": false,
+            "restrictRelationsTo": [
+                "oneWay",
+                "manyWay"
+            ]
+        }
+    },
+    {
+        "uid": "plugins::users-permissions.permission",
+        "plugin": "users-permissions",
+        "apiID": "permission",
+        "schema": {
+            "name": "permission",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "users-permissions_permission",
+            "attributes": {
+                "type": {
+                    "type": "string",
+                    "required": true,
+                    "configurable": false
+                },
+                "controller": {
+                    "type": "string",
+                    "required": true,
+                    "configurable": false
+                },
+                "action": {
+                    "type": "string",
+                    "required": true,
+                    "configurable": false
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "required": true,
+                    "configurable": false
+                },
+                "policy": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "role": {
+                    "nature": "manyToOne",
+                    "target": "plugins::users-permissions.role",
+                    "plugin": "users-permissions",
+                    "dominant": false,
+                    "targetAttribute": "permissions",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "plugins::users-permissions.role",
+        "plugin": "users-permissions",
+        "apiID": "role",
+        "schema": {
+            "name": "role",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "users-permissions_role",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "minLength": 3,
+                    "required": true,
+                    "configurable": false
+                },
+                "description": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "type": {
+                    "type": "string",
+                    "unique": true,
+                    "configurable": false
+                },
+                "permissions": {
+                    "nature": "oneToMany",
+                    "target": "plugins::users-permissions.permission",
+                    "plugin": "users-permissions",
+                    "dominant": false,
+                    "targetAttribute": "role",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                },
+                "users": {
+                    "nature": "oneToMany",
+                    "target": "plugins::users-permissions.user",
+                    "plugin": "users-permissions",
+                    "dominant": false,
+                    "targetAttribute": "role",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "plugins::users-permissions.user",
+        "plugin": "users-permissions",
+        "apiID": "user",
+        "schema": {
+            "name": "user",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "users-permissions_user",
+            "attributes": {
+                "username": {
+                    "type": "string",
+                    "minLength": 3,
+                    "unique": true,
+                    "configurable": false,
+                    "required": true
+                },
+                "email": {
+                    "type": "email",
+                    "minLength": 6,
+                    "configurable": false,
+                    "required": true
+                },
+                "provider": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "password": {
+                    "type": "password",
+                    "minLength": 6,
+                    "configurable": false,
+                    "private": true
+                },
+                "resetPasswordToken": {
+                    "type": "string",
+                    "configurable": false,
+                    "private": true
+                },
+                "confirmationToken": {
+                    "type": "string",
+                    "configurable": false,
+                    "private": true
+                },
+                "confirmed": {
+                    "type": "boolean",
+                    "default": false,
+                    "configurable": false
+                },
+                "blocked": {
+                    "type": "boolean",
+                    "default": false,
+                    "configurable": false
+                },
+                "role": {
+                    "nature": "manyToOne",
+                    "target": "plugins::users-permissions.role",
+                    "plugin": "users-permissions",
+                    "dominant": false,
+                    "targetAttribute": "users",
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": true,
+            "restrictRelationsTo": null
+        }
+    },
+    {
+        "uid": "plugins::upload.file",
+        "plugin": "upload",
+        "apiID": "file",
+        "schema": {
+            "name": "file",
+            "description": "",
+            "draftAndPublish": false,
+            "connection": "default",
+            "kind": "collectionType",
+            "collectionName": "upload_file",
+            "attributes": {
+                "name": {
+                    "type": "string",
+                    "configurable": false,
+                    "required": true
+                },
+                "alternativeText": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "caption": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "width": {
+                    "type": "integer",
+                    "configurable": false
+                },
+                "height": {
+                    "type": "integer",
+                    "configurable": false
+                },
+                "formats": {
+                    "type": "json",
+                    "configurable": false
+                },
+                "hash": {
+                    "type": "string",
+                    "configurable": false,
+                    "required": true
+                },
+                "ext": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "mime": {
+                    "type": "string",
+                    "configurable": false,
+                    "required": true
+                },
+                "size": {
+                    "type": "decimal",
+                    "configurable": false,
+                    "required": true
+                },
+                "url": {
+                    "type": "string",
+                    "configurable": false,
+                    "required": true
+                },
+                "previewUrl": {
+                    "type": "string",
+                    "configurable": false
+                },
+                "provider": {
+                    "type": "string",
+                    "configurable": false,
+                    "required": true
+                },
+                "provider_metadata": {
+                    "type": "json",
+                    "configurable": false
+                },
+                "related": {
+                    "nature": "manyMorphToMany",
+                    "target": "*",
+                    "dominant": false,
+                    "configurable": false,
+                    "private": false,
+                    "unique": false
+                }
+            },
+            "editable": false,
+            "restrictRelationsTo": []
+        }
+    }
+]

@@ -106,7 +106,7 @@
                 </div>
             </nav>
             </transition>
-            <div v-if="$attrs.develop " :class="'absolute border border-green-500 border-dashed top-0 left-0 bottom-0 right-0 scale-x-100 scale-y-100 transform z-' + $attrs.level + ' ' + active(el.id,el.css) + ' bg-transparent'" style="min-height:2rem" @click="select(el)" @contextmenu="$contextMenu($event,el,el.element==='menu'?'edit':'customize')">
+            <div v-if="$attrs.develop " :class="'absolute border-dashed top-0 left-0 bottom-0 right-0 scale-x-100 scale-y-100 transform z-' + $attrs.level + ' ' + active(el.id,el.css) + ' bg-transparent'" style="min-height:2rem" @click="select(el)" @contextmenu="$contextMenu($event,el,el.element==='menu'?'edit':'customize')">
                 <div class="h-2 w-2 absolute top-0 right-0 bg-black rounded-full -m-1" @click="moveUp(el.id)"></div>
                 <div class="h-2 w-2 absolute top-0 left-0 bg-black rounded-full -m-1"></div>
                 <div class="h-2 w-2 absolute bottom-0 right-0 bg-black rounded-full -m-1"></div>
@@ -258,6 +258,9 @@ export default {
                     
                 })
             }
+            this.$attrs.element.hasOwnProperty('plugin') ? 
+                translate += ' border-brown-400 border-4 ' :
+                    translate += ' border-green-500 border '
             if ( id === this.moka.selected ){
                 
                 return ' opacity-100 bg-transparent ' + translate
